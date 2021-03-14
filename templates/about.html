@@ -1,8 +1,5 @@
 {% extends "base.html" %}
-{% block content %}
-
-    {{ company[0]["name"] }}
-    
+{% block content %}   
 
     <h2>{{ page_title }}</h2>
     <p>
@@ -15,216 +12,40 @@
 		leave on other business, welcomed a fourteenth to fill into their party.
     </p>
 
-    <div class="row featurette">
-        <div class="col-md-7">
-            <h3>Thorin Oakenshield</h3>
-			<p>
-				In the year TA 2746, Thorin II was born to Dwarven prince Thráin II in the mountain city of The Lonely Mountain.
-				Early in his youth, he and the other Dwarves of the Lonely Mountain were forced to flee by the dragon Smaug in TA
-				2770. While in exile, he quickly grew to become a capable warrior. This was demonstrated when he participated in the
-				Battle of Azanulbizar in TA 2799. He marched with one of the Dwarven armies beneath the East-gate of Moria. At some
-				point in the fighting, his shield broke, and using an oaken tree branch found on the floor as a shield, he gained
-				the epithet "Oakenshield," which would remain with him even in death.
-			</p>
-        </div>
-        <div class="col-md-5">
-            <img src="https://vignette.wikia.nocookie.net/lotr/images/3/3f/ThorinBIG.jpg" alt="">
-        </div>
-    </div>
+    {% for member in company %}
 
     <div class="row featurette">
-        <div class="col-md-5">
-            <img src="https://vignette.wikia.nocookie.net/lotr/images/b/b4/The-Hobbit-Fili-and-Kili.jpg" alt="">
-        </div>
-        <div class="col-md-7">
-            <h3>Fili and Kili</h3>
-			<p>
-				Fíli and Kíli were nephews of Thorin, who was the elder brother of their mother Dís. They were also nephews of
-				Frerin, grandsons of Thráin II, and great-grandsons of Thrór. Fíli's most distinguishing feature was his long nose,
-				the longest of any of the Dwarves in Thorin's company.
-			</p>
-        </div>
+
+        {% if loop.index % 2 != 0 %}
+
+            <div class="col-md-7">
+                <h3>{{ loop.index }}. {{ member.name }}</h3>
+                <p>{{ member.description }}</p>		
+            </div>
+            <div class="col-md-5">
+                <img src="{{ member.image_source }}" alt="" class="featurette-image image-responsive">
+            </div>
+        
+        {% else %}
+        
+            <div class="col-md-5">
+                    <img src="{{ member.image_source }}" alt="" class="featurette-image image-responsive">
+            </div>
+            <div class="col-md-7">
+                    <h3>{{ loop.index }}. {{ member.name }}</h3>
+                    <p>{{ member.description }}</p>		
+            </div>   
+
+        {% endif %}
+
     </div>
 
-    <div class="row featurette">
-        <div class="col-md-7">
-            <h3>Óin</h3>
-            <p>
-                Óin was the older brother of Glóin, cousin of Dwalin and Balin, and uncle of Gimli. Oin's uncle was King Fundin, the
-                father of Balin and Dwalin. He usually wore a brown-hooded cloak when travelling. Óin fought in the Battle of
-                Azanulbizar along with Thorin Oakenshield, and in TA 2941 joined with Thorin and Company on the quest to reclaim the
-                Lonely Mountain wearing a brown hood
-            </p>
-        </div>
-        <div class="col-md-5">
-            <img src="https://static.wikia.nocookie.net/lotr/images/7/7d/Hobbit-poster-oin.jpg" alt="">
-        </div>
-    </div>
+    {% if loop.index != loop.length %}
 
-    <div class="row featurette">
-        <div class="col-md-5">
-            <img src="https://static.wikia.nocookie.net/lotr/images/f/fc/Gloin_2.jpg" alt="">
-        </div>
-        <div class="col-md-7">
-            <h3>Gloin</h3>
-            <p>
-                Glóin was born in TA 2783, after the Dragon Smaug desolated Erebor. He was the younger child of Gróin and younger
-                brother of Óin.
-                In TA 2799, Glóin was known to have fought in the Battle of Azanulbizar, the last battle of the War of the Dwarves
-                and Orcs, though it is unknown what significance he did, being 16 years old.
-                In TA 2879, in the Blue Mountains, while in exile, his son Gimli was born to him and an unknown wife. In March of TA
-                2941 in Bree, Thorin Oakenshield met by chance the wizard Gandalf the Grey, pushing Thorin to reclaim Erebor, so
-                that Smaug wouldn't start an alliance with Sauron. When Gandalf mentioned hobbits, Glóin referred them as
-                "simpletons" and also said that hobbits "would never dare to come within smelling distance of the nakedest dragonet
-                new from the shell".
-            </p>
-        </div>
-    </div>
+        <hr class="featurette-divider">
 
-    <div class="row featurette">
-        <div class="col-md-7">
-            <h3>Balin</h3>
-            <p>
-                Balin was a Dwarf leader, the son of Fundin, and elder brother of Dwalin. He was one of the thirteen Dwarves who
-                accompanied Thorin II Oakenshield on the quest to regain the Lonely Mountain.
-                A Dwarf Lord known for his wise counsel and willingness to listen, he was one of Thorin's closest friends and
-                advisers. Balin was distantly related to him, and a descendant of the noble house of Durin.
-                He later went to re-establish the kingdom of Moria, but within five years it was overcome once more by Orcs, and he
-                was killed there along with the rest of his companions
-            </p>
-        </div>
-        <div class="col-md-5">
-            <img src="https://static.wikia.nocookie.net/lotr/images/5/52/Balin.jpg" alt="">
-        </div>
-    </div>
+    {% endif %}
+    
+    {% endfor %}
 
-    <div class="row featurette">
-        <div class="col-md-5">
-            <img src="https://static.wikia.nocookie.net/lotr/images/1/1c/Dwalin.jpg" alt="">
-        </div>
-        <div class="col-md-7">
-            <h3>Dwalin</h3>
-            <p>
-                Born in TA 2772, two years after the dragon Smaug had desolated Erebor, Dwalin was the son of Fundin and younger
-                brother of Balin. After fighting in the Battle of Azanulbizar at the age of 27, Dwalin accompanied Thrain the Second
-                and Thorin Oakenshield to settle peacefully in the northern Ered Luin.
-                Later in TA 2841, Dwalin, along with his brother Balin, and a few others accompanied Thráin when he left the Ered
-                Luin to visit Erebor. The small party was dogged by the emissaries of Sauron. In TA 2845, Thráin was captured one
-                night when he and his companions sheltered under the eaves of Mirkwood from a black rain. After a fruitless search
-                for their leader, the Dwarves gave up and returned to Thorin to inform him the news.
-            </p>
-        </div>
-    </div>
-
-    <div class="row featurette">
-        <div class="col-md-7">
-            <h3>Ori</h3>
-            <p>
-                Ori was a member of Thorin's Company of Dwarves and participated in the Quest of Erebor, as well as fighting in and
-                surviving the Battle of Five Armies. He, along with his cousins Dori and Nori
-            </p>
-        </div>
-        <div class="col-md-5">
-            <img src="https://static.wikia.nocookie.net/lotr/images/8/81/Ori.jpeg" alt="">
-        </div>
-    </div>
-
-    <div class="row featurette">
-        <div class="col-md-5">
-            <img src="https://static.wikia.nocookie.net/lotr/images/8/89/Dori-markhadlow-p.jpg" alt="">
-        </div>
-        <div class="col-md-7">
-            <h3>Dori</h3>
-            <p>
-                Dori was a Dwarf of Durin's Folk, who, along with his brother Nori and cousin Ori,[1] travelled with Bilbo Baggins
-                and Thorin Oakenshield as a member of Thorin's Company on the Quest for Erebor, to reclaim the Lonely Mountain from
-                the dragon Smaug.
-            
-                Dori was among the Dwarves at Bag End who joined in singing about "blunting the knives" and "bending the forks"; as
-                well as accompanying by playing the flute. He was described as “decent fellow despite his grumbling”. He often wore
-                a red-violet coat while on the Quest for Erebor. He was noted by Thorin to be the strongest of the thirteen
-                companions
-            </p>
-        </div>
-    </div>
-
-    <div class="row featurette">
-        <div class="col-md-7">
-            <h3>Nori</h3>
-            <p>
-                Nori, as was his brother Dori, was a capable flutist, and both seem to have carried their flutes with them. Both
-                shared Bilbo's liking for regular meals. Before the Quest for the Lonely Mountain, Nori lived in Thorin's Halls in
-                the northern Blue Mountains with his two brothers.
-            </p>
-        </div>
-        <div class="col-md-5">
-            <img src="https://static.wikia.nocookie.net/lotr/images/d/db/Nori-jedbrophy-p.jpg" alt="">
-        </div>
-    </div>
-
-    <div class="row featurette">
-        <div class="col-md-5">
-            <img src="https://static.wikia.nocookie.net/lotr/images/b/b5/Bifur.jpg" alt="">
-        </div>
-        <div class="col-md-7">
-            <h3>Bifur</h3>
-            <p>
-                Whilst he was a descendant of the Dwarves of Khazad-dûm, Bifur was not of Durin's Folk. Most of his familial
-                relations are unclear, and what is known of his parentage is very little. He and his family were driven out of their
-                home in the Lonely Mountain by the Dragon Smaug, and were forced to live in exile, where the Dwarf warrior worked as
-                a toy maker. Following Thorin II Oakenshield to a new life in the Blue Mountains, he continued his life as a toy
-                maker.
-            </p>
-        </div>
-    </div>
-
-    <div class="row featurette">
-        <div class="col-md-7">
-            <h3>Bofur</h3>
-            <p>
-                Bofur's heritage is unclear, but he was not of Durin's Folk. He and his family hailed from the Blue Mountains. As
-                such, they felt less strongly about the quest to reclaim the Lonely Mountain from the dragon Smaug, more interested
-                in the adventure than a home they'd never seen.
-            </p>
-        </div>
-        <div class="col-md-5">
-            <img src="https://static.wikia.nocookie.net/lotr/images/7/77/Bofur.jpg" alt="">
-        </div>
-    </div>
-
-    <div class="row featurette">
-        <div class="col-md-5">
-            <img src="https://static.wikia.nocookie.net/lotr/images/5/5f/Bombur-stephenhunter-p.jpg" alt="">
-        </div>
-        <div class="col-md-7">
-            <h3>Bombur</h3>
-            <p>
-                Bombur's parentage is unknown. He is the brother of Bofur and cousin of Bifur. Bombur was not of Durin's line,
-                although he was descended from the Dwarves of Moria. His birth date is unknown, though it fell somewhere between TA
-                2763 and TA 2859; the brothers Fíli and Kíli were the youngest of the thirteen "by some fifty years," and, after
-                Thorin was captured, Balin was "the eldest left." Fíli was born in TA 2859, and Balin was born in TA 2763. Bombur
-                was thus roughly 150 years old during the quest. Prior to the journey, Bombur likely resided in the Blue Mountains
-                alongside Thorin, after the loss of Thráin II.
-            </p>
-        </div>
-    </div>
-
-    <div class="row featurette">
-        <div class="col-md-7">
-            <h3>Gandalf</h3>
-            <p>
-                Originally called Olórin, he was accounted as the wisest of the Maiar (with the possible exception of Melian). He
-                was created by Ilúvatar before the Music of the Ainur[1], and was at the beginning of Time amongst the Ainur who
-                entered into Eä. In his "youth", he became one of the Maiar who served Manwë, Varda, Irmo and Nienna named. He
-                was associated with light and fire, much like his peer Varda. Yet his ways often took him to Nienna, from whom he
-                learned pity and patience. He loved the Elves, but he walked unseen among them, or wore a fana that appeared like an
-                Elf, and sent them fair visions in their hearts that made them wiser. Throughout his existence, he followed the
-                example of Nienna, he took pity on the sorrows of the Children of Ilúvatar and drove those who listened to him out
-                of despair.
-            </p>
-        </div>
-        <div class="col-md-5">
-            <img src="https://static.wikia.nocookie.net/lotr/images/e/e7/Gandalf_the_Grey.jpg" alt="">
-        </div>
-    </div>
 {% endblock %}
